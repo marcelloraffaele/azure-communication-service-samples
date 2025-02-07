@@ -1,3 +1,4 @@
 python_dotenv
 azure-identity
 azure-communication-identity
+Flask

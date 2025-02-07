@@ -1,0 +1,8 @@
+# create user and token
+curl -i -X POST "http://localhost:5000/user-and-token"
+
+###
+#delete user and token
+curl -X DELETE http://127.0.0.1:5000/user-and-token \
+    -H "Content-Type: application/json" \
+    -d '{"user_id": "8:acs:7f648f73-..."}'

@@ -4,6 +4,7 @@ import os
 from dotenv import load_dotenv
 from azure.communication.identity import CommunicationIdentityClient, CommunicationTokenScope
 from azure.identity import DefaultAzureCredential
+import sys
 
 # Load the environment variables from the .env file
 load_dotenv()
@@ -18,15 +19,28 @@ identity_client_managed_identity = CommunicationIdentityClient(endpoint, Default
 #You can also authenticate using your connection string
 identity_client = CommunicationIdentityClient.from_connection_string(connection_str)
 
-user=identity_client.create_user()
-print("User created with id:" + user.properties['id'])
+try:
+    print("Enter the number of users you want to create: ")
+    user_input = input()
+    if not user_input.isdigit():
+        raise ValueError("The input must be a number.")
+    n = int(user_input)
+    if n > 5:
+        raise ValueError("The number must be at least 5.")
 
-tokenresponse = identity_client.get_token(user, scopes=[CommunicationTokenScope.CHAT])
-print("Token issued with value: " + tokenresponse.token)
+
+    for i in range(n):
+        print("Creating User and Token: " + str(i+1))
+
+        user=identity_client.create_user()
+        print("User created with id: " + user.properties['id'])
+
+        tokenresponse = identity_client.get_token(user, scopes=[CommunicationTokenScope.CHAT, CommunicationTokenScope.VOIP])
+        print("Token issued with value: " + tokenresponse.token)
+
+        print()
 
 
-identity_client.revoke_tokens(user)
-print("Token revoked")
-
-identity_client.delete_user(user)
-print("User deleted")
+except ValueError as e:
+    print(f"Error: {e}")
+    sys.exit(1)
