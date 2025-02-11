@@ -1,0 +1,22 @@
+{
+  "name": "4.join-teams-meeting",
+  "version": "1.0.0",
+  "description": "To run the frontend:\r ```shell\r npx webpack serve --config webpack.config.js\r ```",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@azure/communication-calling": "^1.32.1",
+    "@azure/communication-common": "^2.3.1"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^11.0.0",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.2"
+  }
+}
