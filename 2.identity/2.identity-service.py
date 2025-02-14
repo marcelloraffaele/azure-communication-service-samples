@@ -21,6 +21,7 @@ def create_user_and_token():
     try:
         # Create a user and token
         user = identity_client.create_user()
+        # by default, the token will have chat and voip scopes
         token_response = identity_client.get_token(user, scopes=[CommunicationTokenScope.CHAT, CommunicationTokenScope.VOIP])
         return jsonify({
             'user_id': user.properties['id'],
