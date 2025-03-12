@@ -1,3 +1,12 @@
+https://learn.microsoft.com/en-us/azure/communication-services/quickstarts/voice-video-calling/getting-started-with-calling?tabs=uwp&pivots=platform-web
+
+You need to:
+1. Run the server
+2. open in two different browsers
+3. generate a token for each browser
+4. call from one browser to another using the user id of the other browser
+5. accept the call in the other browser
+
 Init the project:
 ```shell
 npm init -y
